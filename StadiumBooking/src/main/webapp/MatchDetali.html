@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match Details</title>
+    <link rel="stylesheet" href="jquery-ui-1.13.0/jquery-ui.css">
+    <link rel="stylesheet" href="jquery-ui-1.13.0/jquery-ui.structure.css">
+    <link rel="stylesheet" href="jquery-ui-1.13.0/jquery-ui.theme.css">
+    <style>
+        .sidenav {
+            height: 100%;
+            width: 200px;
+            position: fixed;
+
+            top: 0;
+            left: 0;
+            background-color:steelblue;
+
+        }
+
+        .sidenav a {
+            padding: 6px 6px 6px 32px;
+            text-decoration: none;
+            font-size: 23px;
+            color: white;
+            display: block;
+        }
+
+        .sidenav a:hover {
+            color: black;
+        }
+
+        .main {
+            margin-left: 200px;
+        }
+
+
+
+        #Form{
+            position: absolute;
+            top: 30PX;
+            left: 500px;
+        }
+        #From input{
+            width: 150px;
+        }
+        #From select{
+            width: 150px;
+        }
+        #spname{
+            width: 150px;
+            position: relative;
+            left: 35px;
+        }
+        #dateinput{
+            position: relative;
+            left: -5px;
+        }
+        .teamA{
+            width: 150px;
+            position: absolute;
+            left: 140px;
+        }
+        .teamB{
+            width: 150px;
+            position: absolute;
+            left: 140px;
+        }
+        #event{
+            width: 150px;
+            position: relative;
+            left: 85px;
+        }
+
+        #teamAlogo, #teamBlogo{
+            position: relative;
+            left: 50px;
+        }
+
+        #seats{
+            width: 100px;
+            position: relative;
+            left: 15px;
+        }
+
+        #fclass{
+            width: 100px;
+            position: relative;
+            left: 25px;
+        }
+
+        #sclass{
+            width: 100px;
+            position: relative;
+            left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="sidenav">
+        <a href="UserProfile.jsp">Profile</a>
+        <a href="#">Matchs Detalis</a>
+        <a href="Getallusers.jsp">All User</a>
+        <a href="#">Matchs Detalis</a>
+        <a href="#">Booking Details</a>
+        <a href="index.jsp">Logout</a>
+    </div>
+
+    <div id="Form">
+    <form action="matchServe" >
+        <label for="stadoumName"><b>Stadoum Name:</b></label>
+        <input type="text" name="stdname" placeholder="Enter Stadium Name" style="position: relative; left: 20px;">
+        <br> <br>
+        <label for="Sports Name"><b>Sports Name:</b></label>
+        <select name="spname" id="spname">
+            <option value="">--Select--</option>
+            <option value="cricket">Cricket</option>
+            <option value="football">Football</option>
+        </select>
+        <br> <br>
+        <label for="event"><b>Event:</b></label>
+        <select name="event" id="event" >
+            <option value="">--Select--</option>
+            <option value="IPL">IPL</option>
+            <option value="ICC">ICC World CUP</option>
+            <option value="ISL">ISL</option>
+        </select>
+        <br> <br>
+
+        <label for="location"><b>Location:</b></label>
+        <select  name="location" id="location" style="position: relative; left: 65px; width: 180px;">
+            <option value="">--Select Location--</option>
+            <option value="Chennai">Chennai</option>
+            <option value="Kolkata">Kolkata</option>
+            <option value="Bengalur">Bengalur</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Dehli">Dehli</option>
+            <option value="Ahmedabad">Ahmedabad</option>
+            <option value="Hyderabad">Hyderabad</option>
+        </select>
+        <br> <br>
+        <label for="date"><b>Date:</b></label>
+        <input type="text" id="dateinput" name="matchDate"   placeholder="Select Date" style="position: relative; left: 95px;">
+        <br> <br>
+        
+        
+        
+        <div>
+
+
+        <label for="teamA" onmouseover="spname()"><b>Team A:</b></label> 
+        <select name="teamA" class="teamA" id="iplteamA">
+            <option value="">--Select--</option>
+            <option value="CSK">CSK</option>
+            <option value="MI">MI</option>
+            <option value="RCB">RCB</option>
+            <option value="DC">DC</option>
+            <option value="SRH">SRH</option>
+            <option value="RR">RR</option>
+            <option value="PBKS">PBKS</option>
+            <option value="KKR">KKR</option>
+        </select> 
+      
+      
+        <br> <br>
+        &nbsp;
+        <b>VS</b>
+        &nbsp;
+        <br><br>
+        <label for="teamB"><b>Team B:</b></label>
+        <select name="teamB" class="teamB" id="iplteamB">
+            <option value="">--Select--</option>
+            <option value="CSK">CSK</option>
+            <option value="MI">MI</option>
+            <option value="RCB">RCB</option>
+            <option value="DC">DC</option>
+            <option value="SRH">SRH</option>
+            <option value="RR">RR</option>
+            <option value="PBKS">PBKS</option>
+            <option value="KKR">KKR</option>
+        </select>
+
+        <br>
+        <br>
+    </div>
+       
+    
+    
+    
+    <label for="teamAimg"><b>Team A logo </b></label>
+        <input type="file" name="teamAlogo" id="teamAlogo">
+        <br> <br>
+        <label for="tramBimg"><b>Team B logo</b></label>
+        <input type="file" name="teamBlogo" id="teamBlogo">
+        <br> <br>
+        <label for="numberseats"><b>Number Of Seats:</b></label>
+        <select name="totalSeats" id="seats" >
+            <option value="200">200</option>
+            <option value="300">300</option>
+            <option value="400">400</option>
+            <option value="500">500</option>
+        </select>
+        <br> <br>
+         <label for="availseats"><b>Available Seats: </b></label>
+        <select name="availseats" id="seat">
+            <option value="">--Select--</option>
+            <option value="100">100</option>
+            <option value="125">125</option>
+            <option value="150">150</option>
+            <option value="200">200</option>
+        </select>
+        <br> <br>
+        <label for="firstClass"><b>First Class Rate:</b></label>
+        <select name="firstClass" id="fclass" >
+            <option value="1000">1000Rs</option>
+            <option value="1500">1500Rs</option>
+            <option value="2000">2000Rs</option>
+            <option value="2500">2500Rs</option>
+        </select>
+
+        <br> <br>
+        <label for="secondClass"><b>Second Class Rate:</b></label>
+        <select name="secondClass" id="sclass">
+            <option value="500">500Rs</option>
+            <option value="700">700Rs</option>
+            <option value="900">900Rs</option>
+            <option value="1000">1000Rs</option>
+        </select>
+        <br> <br> <br>
+
+        <button onclick="sports()" type="submit">Submit</button> &nbsp; &nbsp; <button type="reset">Reset</button>
+    </form>
+
+</div>
+</body>
+</html>
+<script src="jq/jquery.js" type="text/javascript"></script>
+<script src="jquery-ui-1.13.0/jquery-ui.js" type="text/javascript"></script>
+<script>
+    $("#dateinput").datepicker({
+        numberOfMonths:1,
+        minDate:new Date(2021,11,11),
+        maxDate:new Date(2022,1,1),
+        changeYear:true,
+        changeMonth:true
+    });
+
+
+    function spname(){
+        console.log("vanakkam");
+    var select=document.getElementById("spname");
+    var event=document.getElementById("event");
+    var teamA=document.getElementsByClassName("teamA");
+    var teamB=document.getElementsByClassName("teamB");
+
+
+
+   if(select.options[select.selectedIndex].value=="cricket" &&
+     event.options[event.selectedIndex].value=="IPL"){
+        teamA[0].style.visibility="visible";
+        teamA[1].style.visibility="hidden";
+        teamA[2].style.visibility="hidden";
+
+        teamB[0].style.visibility="visible";
+        teamB[1].style.visibility="hidden";
+        teamB[2].style.visibility="hidden";
+
+   }
+   
+   
+    else if(select.options[select.selectedIndex].value=="cricket" &&
+     event.options[event.selectedIndex].value=="ICC"){
+
+        teamA[0].style.visibility="hidden";
+        teamA[1].style.visibility="visible";
+        teamA[2].style.visibility="hidden";
+
+        teamB[0].style.visibility="hidden";
+        teamB[1].style.visibility="visible";
+        teamB[2].style.visibility="hidden";
+    }
+    else if(select.options[select.selectedIndex].value=="football" &&
+     event.options[event.selectedIndex].value=="ISL"){
+        teamA[0].style.visibility="hidden";
+        teamA[1].style.visibility="hidden";
+        teamA[2].style.visibility="visible";
+
+        teamB[0].style.visibility="hidden";
+        teamB[1].style.visibility="hidden";
+        teamB[2].style.visibility="visible";
+
+    }
+
+   
+    }
+
+    function sports(){
+
+        
+    var iplteamA=document.getElementById("iplteamA");
+    var iccteamA=document.getElementById("iccteamA");
+    var islteamA=document.getElementById("islteamA");
+
+    var iplteamB=document.getElementById("iplteamB");
+    var iccteamB=document.getElementById("iccteamB");
+    var islteamB=document.getElementById("islteamB");
+console.log(iplteamA.options[iplteamA.selectedIndex].value );
+console.log( iplteamB.options[iplteamB.selectedIndex].value);
+        if(iplteamA.options[iplteamA.selectedIndex].value == iplteamB.options[iplteamB.selectedIndex].value &&
+        iccteamA.options[iccteamA.selectedIndex].value == iccteamB.options[iccteamB.selectedIndex].value  &&
+        islteamA.options[islteamA.selectedIndex].value == islteamB.options[islteamB.selectedIndex].value
+        ){
+        alert("Same Team Can't be Selected in both Team A & Team B ");
+    }
+    }
+</script>
