@@ -1,11 +1,13 @@
 package com.stadiumbooking.dao;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.stadiumbooking.module.Match;
 
 public interface MatchDao {
 	
-	public void InsertMatchDetalis(Match match) throws ClassNotFoundException, SQLException;
+	public void insertMatchDetalis(Match match) throws ClassNotFoundException, SQLException;
+	public ResultSet getAllMatchDetalis() throws ClassNotFoundException, SQLException;
 
 }

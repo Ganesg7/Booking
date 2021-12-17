@@ -1,12 +1,17 @@
 package com.stadiumbooking.controller;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Locale;
 
 import com.stadiumbooking.daoimpl.MatchDaoImpl;
+import com.stadiumbooking.daoimpl.SportsDaoImpl;
 import com.stadiumbooking.module.Match;
 
 import jakarta.servlet.annotation.WebServlet;
@@ -21,7 +26,7 @@ public class MatchController  extends HttpServlet{
 	
 	public void service(HttpServletRequest req, HttpServletResponse res) {
 	
-		int spid=0;
+		SportsDaoImpl sportsDao=new SportsDaoImpl();
 		
 		String stdName=req.getParameter("stdname");
 		System.out.println(stdName);
@@ -29,12 +34,17 @@ public class MatchController  extends HttpServlet{
 		System.out.println(location);
 		String sportsName=req.getParameter("spname");
 		System.out.println(sportsName);
-		if(sportsName.equals("cricket")) {
-			 spid=10;
-		}
-		
-		else if(sportsName.equals("football")) {
-			spid=20;
+		String eventName=req.getParameter("event");
+		System.out.println(eventName);
+		int spid = 0;
+		try {
+			spid = sportsDao.getSportsId(sportsName, eventName);
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		
 				
@@ -48,18 +58,34 @@ public class MatchController  extends HttpServlet{
 		System.out.println(teamAlogo);
 		String teamBlogo=req.getParameter("teamBlogo");
 		System.out.println(teamBlogo);
-		int totalseats=(int) req.getParameter("totalSeats");
+		int totalseats=Integer.parseInt(req.getParameter("totalSeats"));
+		System.out.println(totalseats);
 		int availSeats=Integer.parseInt(req.getParameter("availseats"));
-		int fClass=Integer.parseInt(req.getParameter("fcalss"));
-		int sClass=Integer.parseInt(req.getParameter("sclass" ));
-		System.out.println(spid+stdName+location+teamA+teamB+teamAlogo+teamBlogo+totalseats+availSeats+fClass+sClass);
-		String dateInString = req.getParameter("matchDate");
-		LocalDate date1 = LocalDate.parse(dateInString, DateTimeFormatter.BASIC_ISO_DATE);
-
+		System.out.println(availSeats);
+		int fClass=Integer.parseInt(req.getParameter("firstClass"));
+		System.out.println(fClass);
+		int sClass=Integer.parseInt(req.getParameter("secondClass" ));
+		System.out.println(sClass);
+	      String dateInString = req.getParameter("matchDate");
 		
 		
-		Match match=new Match(spid,stdName,location,date1,teamA,teamB,teamAlogo,teamBlogo,totalseats,availSeats,fClass,sClass);
-		
+		try {
+			System.out.println(dateInString);
+			LocalDate date = LocalDate.parse(dateInString);
+			System.out.println(date);
+			Match match=new Match(spid,stdName,location,date,teamA,teamB,teamAlogo,teamBlogo,totalseats,availSeats,fClass,sClass);
+			matchDao.insertMatchDetalis(match);
+			res.sendRedirect("AllMatchDetails.jsp");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 

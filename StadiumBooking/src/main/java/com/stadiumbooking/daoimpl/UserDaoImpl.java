@@ -71,6 +71,7 @@ public class UserDaoImpl  implements UserDao  {
 		PreparedStatement stmt1=con.prepareStatement(query);		
 		stmt1.setInt(1, id);
 		ResultSet rs2=stmt1.executeQuery();
+	
 		return rs2;
 	
 		

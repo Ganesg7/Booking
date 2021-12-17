@@ -118,8 +118,8 @@
         <label for="Sports Name"><b>Sports Name:</b></label>
         <select name="spname" id="spname">
             <option value="">--Select--</option>
-            <option value="cricket">Cricket</option>
-            <option value="football">Football</option>
+            <option value="Cricket">Cricket</option>
+            <option value="Football">Football</option>
         </select>
         <br> <br>
         <label for="event"><b>Event:</b></label>
@@ -144,7 +144,7 @@
         </select>
         <br> <br>
         <label for="date"><b>Date:</b></label>
-        <input type="text" id="dateinput" name="matchDate"   placeholder="Select Date" style="position: relative; left: 95px;">
+        <input type="date" id="dateinput" name="matchDate" min="2021-12-17"  placeholder="Select Date" style="position: relative; left: 95px;">
         <br> <br>
         
         
@@ -192,10 +192,10 @@
     
     
     <label for="teamAimg"><b>Team A logo </b></label>
-        <input type="file" name="teamAlogo" id="teamAlogo">
+        <input type="url" name="teamAlogo" id="teamAlogo">
         <br> <br>
         <label for="tramBimg"><b>Team B logo</b></label>
-        <input type="file" name="teamBlogo" id="teamBlogo">
+        <input type="url" name="teamBlogo" id="teamBlogo">
         <br> <br>
         <label for="numberseats"><b>Number Of Seats:</b></label>
         <select name="totalSeats" id="seats" >

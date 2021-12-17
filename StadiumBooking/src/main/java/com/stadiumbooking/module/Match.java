@@ -28,14 +28,14 @@ public class Match {
 
 
 
-	public Match(int sportsId, String stadium_name, String location, LocalDate date1, String teamA, String teamB,
+	public Match(int sportsId, String stadium_name, String location, LocalDate date, String teamA, String teamB,
 			String teamAlogo, String teamBlogo, int totalseats, int availableSeats, int firstClass_Seats_price,
 			int secondClass_seats_price) {
 		super();
 		this.sportsId = sportsId;
 		this.stadium_name = stadium_name;
 		this.location = location;
-		this.match_date = date1;
+		this.match_date = date;
 		this.teamA = teamA;
 		this.teamB = teamB;
 		this.teamAlogo = teamAlogo;
