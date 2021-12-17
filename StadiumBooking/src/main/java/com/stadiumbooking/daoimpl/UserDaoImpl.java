@@ -78,51 +78,24 @@ public class UserDaoImpl  implements UserDao  {
 	}
 
 	@Override
-	public void updateUser(User user) throws ClassNotFoundException, SQLException {
+	public void updateUser(int userId,String name,String username,String password,String email,Long phoneNumber) throws ClassNotFoundException, SQLException {
 		Scanner sc = new Scanner(System.in);
 		ConnectionUtill conUtil=new ConnectionUtill();
 		Connection con=conUtil.getDBConnect();
 		Statement stmt=con.createStatement();
 
-		
-			System.out.println("Enter Name To Update");
-			String que = "update users set name=? where userid=?";
+			String que = "update users set name=?,username=?,password=?,email=?, phoneNumber=? where userid=?";
 			PreparedStatement pstmt = con.prepareStatement(que);
-			String name=sc.nextLine();
+		
 			int id=Integer.parseInt(sc.nextLine());
 			pstmt.setString(1, name);
-			pstmt.setInt(2, id);
+			pstmt.setString(2, username);
+			pstmt.setString(3, password);
+			pstmt.setString(4, email);
+			pstmt.setLong(5, phoneNumber);
+			pstmt.setInt(6, userId);
 			System.out.println(pstmt.executeUpdate()+" Updated");
-					
-			System.out.println("Enter Username To Update");
-			String que1 = "update users set username=(?) where userid=?";
-			PreparedStatement pstmt1 = con.prepareStatement(que1);
-			String username=sc.nextLine();
-			int id1=Integer.parseInt(sc.nextLine());
-			pstmt1.setString(1, username);
-			pstmt1.setInt(2, id1);
-			System.out.println(pstmt1.executeUpdate()+" Updated");
-			
-
-			System.out.println("Enter Password To Update");
-			String que2 = "update users set password=(?) where userid=?";
-			PreparedStatement pstmt2 = con.prepareStatement(que2);
-			String password=sc.nextLine();
-			int id2=Integer.parseInt(sc.nextLine());
-			pstmt2.setString(1, password);
-			pstmt2.setInt(2, id2);
-			System.out.println(pstmt2.executeUpdate()+" Updated");
-			
-
-			System.out.println("Enter Email To Update");
-			String que3 = "update users set email=(?) where userid=?";
-			PreparedStatement pstmt3 = con.prepareStatement(que3);
-			String email=sc.nextLine();
-			int id3=Integer.parseInt(sc.nextLine());
-			pstmt3.setString(1, email);
-			pstmt3.setInt(2, id3);
-			System.out.println(pstmt3.executeUpdate()+" Updated");
-
+		
 		
 	}
 
