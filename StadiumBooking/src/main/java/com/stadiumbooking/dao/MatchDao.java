@@ -9,5 +9,6 @@ public interface MatchDao {
 	
 	public void insertMatchDetalis(Match match) throws ClassNotFoundException, SQLException;
 	public ResultSet getAllMatchDetalis() throws ClassNotFoundException, SQLException;
+	public ResultSet getDate() throws ClassNotFoundException, SQLException;
 
 }

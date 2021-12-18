@@ -69,4 +69,16 @@ public class MatchDaoImpl implements MatchDao {
 		return rs;
 	}
 
+	@Override
+	public ResultSet getDate() throws ClassNotFoundException, SQLException {
+		ConnectionUtill conUtil=new ConnectionUtill();
+		Connection con=conUtil.getDBConnect();
+		Statement stmt=con.createStatement();
+         String query="select to_char(sysdate,'yyyy-mm-dd') from dual";
+		
+		ResultSet rs=stmt.executeQuery(query);
+		return rs;
+		
+	}
+
 }

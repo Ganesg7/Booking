@@ -76,7 +76,7 @@ left:40px;
 
    <div class="sidenav">
         <a href="UserProfile.jsp">Profile</a>
-        <a href="MatchDetali.html">Matchs Detalis</a>
+        <a href="matchDetails.jsp">Matchs Detalis</a>
         <a href="Getallusers.jsp">All User</a>
         <a href="AllMatchDetails.jsp">Matchs Detalis</a>
         <a href="#">Booking Details</a>
@@ -97,11 +97,11 @@ left:40px;
  <%while(rs.next())
 	 {%>     
      <br>
-        <img src="<%=rs.getString(8) %>" alt="">  &nbsp;  &nbsp; <label for=""><b><%=rs.getString(6) %></b> &nbsp; Vs &nbsp; <b> <%=rs.getString(7) %> </b></label>
+        <img src="<%=rs.getString(8) %>" >  &nbsp;  &nbsp; <label ><b><%=rs.getString(6) %></b> &nbsp; Vs &nbsp; <b> <%=rs.getString(7) %> </b></label>
    &nbsp;  &nbsp;     <img src="<%=rs.getString(9) %>" alt=""> <br> <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label class="matchDetalis" for=""><%=rs.getString(3) %></label><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label class="matchDetalis" for=""><%=rs.getString(4) %></label><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label class="matchDetalis" for=""><%=rs.getDate(5) %></label><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label class="matchDetalis" ><%=rs.getString(3) %></label><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label class="matchDetalis" ><%=rs.getString(4) %></label><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label class="matchDetalis" ><%=rs.getDate(5) %></label><br>
 
         <button>Book Now</button>
         <hr>

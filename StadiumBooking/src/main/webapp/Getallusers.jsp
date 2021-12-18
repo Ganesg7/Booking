@@ -77,7 +77,7 @@
 
    <div class="sidenav">
         <a href="UserProfile.jsp">Profile</a>
-        <a href="MatchDetali.html">Matchs Detalis</a>
+        <a href="matchDetails.jsp">Matchs Detalis</a>
         <a href="Getallusers.jsp">All User</a>
         <a href="AllMatchDetails.jsp">Matchs Detalis</a>
         <a href="#">Booking Details</a>

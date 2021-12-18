@@ -181,6 +181,7 @@
         </form>
     </div>
     <!-- Error Message -->
+  
     <%
     String error=(String)session.getAttribute("error");
     if (error!=null) {
