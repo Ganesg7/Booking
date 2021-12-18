@@ -107,25 +107,32 @@ input {
 	<div id="update">
 
 		<form action="update" onsubmit="return validate()">
+		
 
-			<label><b>Name:</b></label> <br> <input type="text"
-				name="updateName" id="updateName"> <br> <label for=""
-				id="uname" style="visibility: hidden;">Enter Name</label> <br>
+			<label><b>Name:</b></label> <br>
+		    <input type="text" 	name="updateName" id="updateName"> <br>
+		    <label id="uname" style="visibility: hidden;">Enter Name</label> <br>
 
-			<label><b>Username:</b></label> <br> <input type="text"
-				name="updateUsername" id="updateUsername"> <br>
-				 <label id="username" style="visibility: hidden;">Enter Username</label> <br>
-			<label ><b>Password:</b></label> <br> <input
-				type="text" name="updatePassword" id="updatePassword"> <br>
-			<label for="" id="lpass" style="visibility: hidden;">Enter
-				Password</label> <br> <label for=""><b>Email:</b></label> <br> <input
-				type="email" name="updateEmail" id="updateEmail"> <br>
-			<label for="" id="lmail" style="visibility: hidden;">Enter
-				Email</label> <br> <label for=""><b>Phone Number:</b></label> <br>
+			<label><b>Username:</b></label> <br> 
+			<input type="text"	name="updateUsername" id="updateUsername"> <br>			
+		    <label id="username" style="visibility: hidden;">Enter Username</label> <br>
+			
+			
+			
+			<label ><b>Password:</b></label> <br> 
+			<input	type="text" name="updatePassword" id="updatePassword"> <br>
+			<label for="" id="lpass" style="visibility: hidden;">EnterPassword</label> <br>
+			
+			<label for=""><b>Email:</b></label> <br> 
+		    <input	type="email" name="updateEmail" id="updateEmail"> <br>
+			<label for="" id="lmail" style="visibility: hidden;">Enter	Email</label> <br> 
+			
+			<label for=""><b>Phone Number:</b></label> <br>
 			<input type="number" name="updateNumber" id="updateNumber"> <br>
-			<label for="" id="mobile" style="visibility: hidden;">Enter
-				phone Number</label>
+			<label for="" id="mobile" style="visibility: hidden;">Enter	phone Number</label>
+			
 			<button type="submit">Submit</button>
+			<input type="text" name="role" id="role" style="visibility: hidden;">
 		</form>
 
 	</div>
@@ -145,6 +152,7 @@ if (rs2.next()) {%>
 
        document.getElementById("updateName").value="<%=rs2.getString(2)%>";
        document.getElementById("updateUsername").value="<%=rs2.getString(3)%>";
+       document.getElementById("role").value="<%=rs2.getString(4) %>";
        document.getElementById("updatePassword").value="<%=rs2.getString(5)%>";
        document.getElementById("updateEmail").value="<%=rs2.getString(6)%>";
        document.getElementById("updateNumber").value="<%=rs1.getString(7)%>";

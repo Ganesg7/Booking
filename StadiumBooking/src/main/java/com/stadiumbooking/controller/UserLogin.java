@@ -36,10 +36,10 @@ public class UserLogin extends HttpServlet {
 			System.out.println(role);
 		
 			
-			int i = rs.getInt(1);
+			int userID = rs.getInt(1);
 			HttpSession session = req.getSession();
-			session.setAttribute("id", i);
-			 System.out.println(i);
+			session.setAttribute("id", userID);
+			 System.out.println(userID);
 			rs.close();
 			if(role.equals("Admin")) 
 					{

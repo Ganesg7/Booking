@@ -51,6 +51,23 @@
             left: 500px;
             top: 50px;
         }
+        
+        
+img{
+width:50px;
+height:50px;
+}
+button{
+background-color:lightgreen;
+color:red;
+position:relative;
+left:60px;
+}
+.matchDetalis {
+position:relative;
+left:40px;
+}
+        
     </style>
 </head>
 
