@@ -19,10 +19,10 @@ public class UserController extends HttpServlet {
 	UserDaoImpl userDao=new UserDaoImpl();
 	
 	public void service(HttpServletRequest req, HttpServletResponse res) {
-		String name=req.getParameter("name");
-		String uname=req.getParameter("uname");
-		String pass=req.getParameter("pass");
-		String mail=req.getParameter("mail");
+		String name=req.getParameter("name").trim();
+		String uname=req.getParameter("uname").trim();
+		String pass=req.getParameter("pass").trim();
+		String mail=req.getParameter("mail").trim();
 		Long phone=Long.parseLong(req.getParameter("phone"));
 		System.out.println(name+"\n"+uname);
 		User user=new User(name,uname,pass,mail,phone);

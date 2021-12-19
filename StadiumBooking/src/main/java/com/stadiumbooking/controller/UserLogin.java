@@ -20,8 +20,8 @@ public class UserLogin extends HttpServlet {
 	public void service(HttpServletRequest req, HttpServletResponse res)  {
 		User user=new User();
 		
-		String userName=req.getParameter("username");
-		String passWord=req.getParameter("password");
+		String userName=req.getParameter("username").trim();
+		String passWord=req.getParameter("password").trim();
 		System.out.println(userName);
 		int id=0;
 		try {

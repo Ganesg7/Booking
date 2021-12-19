@@ -28,7 +28,7 @@ public class MatchController  extends HttpServlet{
 	
 		SportsDaoImpl sportsDao=new SportsDaoImpl();
 		
-		String stdName=req.getParameter("stdname");
+		String stdName=req.getParameter("stdname").trim();
 		System.out.println(stdName);
 		String location=req.getParameter("location");
 		System.out.println(location);
