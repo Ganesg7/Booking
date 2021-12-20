@@ -110,7 +110,7 @@ ResultSet rs=matchDao.getDate();
         <a href="UserProfile.jsp">Profile</a>
         <a href="matchDetails.jsp">Matchs Detalis</a>
         <a href="Getallusers.jsp">All User</a>
-        <a href="#">Matchs Detalis</a>
+        <a href="AllMatchDetails.jsp">All Matchs Detalis</a>
         <a href="#">Booking Details</a>
         <a href="index.jsp">Logout</a>
     </div>
@@ -151,7 +151,7 @@ ResultSet rs=matchDao.getDate();
         <%if(rs.next()){ %>
         
         <label for="date"><b>Date:</b></label>
-        <input type="date" id="dateinput" name="matchDate" min="<%=rs.getDate(1) %>"  placeholder="Select Date" style="position: relative; left: 95px;">
+        <input type="date" id="dateinput" name="matchDate" min="<%=rs.getDate(1) %>"   placeholder="Select Date" style="position: relative; left: 95px;">
         <%} %>
         <br> <br>
         

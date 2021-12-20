@@ -51,7 +51,7 @@ input {
 #update {
 	visibility: hidden;
 	position: absolute;
-	left: 400px;
+	left: 450px;
 	top: 60px;
 }
 
@@ -75,7 +75,7 @@ input {
 		<a href="UserProfile.jsp">Profile</a> 
 		<a href="matchDetails.jsp">Matchs Detalis</a>
 		 <a href="Getallusers.jsp">All User</a> 
-		 <a	href="AllMatchDetails.jsp">Matchs Detalis</a>
+		 <a	href="AllMatchDetails.jsp">All Matchs Detalis</a>
 		  <a href="#">BookingDetails</a> 
 		  <a href="index.jsp">Logout</a>
 	</div>

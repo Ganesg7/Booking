@@ -53,7 +53,7 @@
 #update {
 	visibility: hidden;
 	position: absolute;
-	left: 400px;
+	left: 450px;
 	top: 60px;
 }
 

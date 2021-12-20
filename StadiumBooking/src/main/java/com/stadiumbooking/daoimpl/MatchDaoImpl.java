@@ -74,7 +74,7 @@ public class MatchDaoImpl implements MatchDao {
 		ConnectionUtill conUtil=new ConnectionUtill();
 		Connection con=conUtil.getDBConnect();
 		Statement stmt=con.createStatement();
-         String query="select to_char(sysdate,'yyyy-mm-dd') from dual";
+         String query="select to_char(sysdate,'yyyy-mm-dd')  as today  from dual";
 		
 		ResultSet rs=stmt.executeQuery(query);
 		return rs;

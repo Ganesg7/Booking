@@ -73,7 +73,7 @@ left:40px;
 
 <body>
     <div class="sidenav">
-        <a href="UserProfile.jsp">Profile</a>
+        <a href="usersprofile.jsp">Profile</a>
         <a href="allMatchDetalis.jsp">Matchs Detalis</a>
         <a href="#">My Match</a>
         <a href="#">Payment</a>
@@ -99,7 +99,7 @@ left:40px;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label for=""><%=rs.getString(4) %></label><br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label for=""><%=rs.getDate(5) %></label><br>
 
-        <button><%=rs.getInt(13) %> Book Now</button>
+        <button> Book Now</button>
         <hr>
 <%} %>
 
