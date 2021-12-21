@@ -1,7 +1,9 @@
 package com.stadiumbooking.module;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
+import java.util.Objects;
 
 public class Match {
 
@@ -10,6 +12,7 @@ public class Match {
 	private String stadium_name;
 	private String location;
 	private LocalDate match_date; 
+	private LocalTime match_time;
 	private  String teamA;
 	private  String teamB;
 	private String teamAlogo;
@@ -28,7 +31,7 @@ public class Match {
 
 
 
-	public Match(int sportsId, String stadium_name, String location, LocalDate date, String teamA, String teamB,
+	public Match(int sportsId, String stadium_name, String location, LocalDate date,LocalTime match_time, String teamA, String teamB,
 			String teamAlogo, String teamBlogo, int totalseats, int availableSeats, int firstClass_Seats_price,
 			int secondClass_seats_price) {
 		super();
@@ -36,6 +39,7 @@ public class Match {
 		this.stadium_name = stadium_name;
 		this.location = location;
 		this.match_date = date;
+		this.match_time=match_time;
 		this.teamA = teamA;
 		this.teamB = teamB;
 		this.teamAlogo = teamAlogo;
@@ -188,6 +192,52 @@ public class Match {
 
 	public void setSecondClass_seats_price(int secondClass_seats_price) {
 		this.secondClass_seats_price = secondClass_seats_price;
+	}
+
+
+
+	public LocalTime getMatch_time() {
+		return match_time;
+	}
+
+
+
+	public void setMatch_time(LocalTime match_time) {
+		this.match_time = match_time;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Match [match_id=" + match_id + ", sportsId=" + sportsId + ", stadium_name=" + stadium_name
+				+ ", location=" + location + ", match_date=" + match_date + ", match_time=" + match_time + ", teamA="
+				+ teamA + ", teamB=" + teamB + ", teamAlogo=" + teamAlogo + ", teamBlogo=" + teamBlogo + ", totalseats="
+				+ totalseats + ", availableSeats=" + availableSeats + ", firstClass_Seats_price="
+				+ firstClass_Seats_price + ", secondClass_seats_price=" + secondClass_seats_price + "]";
+	}
+
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(location, match_date, match_time, teamA, teamB);
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Match other = (Match) obj;
+		return Objects.equals(location, other.location) && Objects.equals(match_date, other.match_date)
+				&& Objects.equals(match_time, other.match_time) && Objects.equals(teamA, other.teamA)
+				&& Objects.equals(teamB, other.teamB);
 	}
 	
 	

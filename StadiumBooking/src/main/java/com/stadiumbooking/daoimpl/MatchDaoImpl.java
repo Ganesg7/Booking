@@ -23,7 +23,7 @@ public class MatchDaoImpl implements MatchDao {
 		ConnectionUtill conUtil=new ConnectionUtill();
 		Connection con=conUtil.getDBConnect();
 		
-		String query="insert into match_info(sportsId,stadium_name, location,match_date,teamA,teamB,teamAlogo, teamBlogo, totalseats, availableSeats, firstClass_Seats_price, secondClass_seats_price) values(?,?,?,?,?,?,?,?,?,?,?,?)";
+		String query="insert into match_info(sportsId,stadium_name, location,match_date, match_time,teamA,teamB,teamAlogo, teamBlogo, totalseats, availableSeats, firstClass_Seats_price, secondClass_seats_price) values(?,?,?,?,? ,?,?,?,?,?,?,?,?)";
 		
 		PreparedStatement stmt=con.prepareStatement(query);
 //		DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy ");  
@@ -42,14 +42,15 @@ public class MatchDaoImpl implements MatchDao {
 		stmt.setString(2, match.getStadium_name());
 		stmt.setString(3, match.getLocation());
 		stmt.setDate(4, java.sql.Date.valueOf(match.getMatch_date()));
-		stmt.setString(5, match.getTeamA());
-		stmt.setString(6, match.getTeamB());
-		stmt.setString(7, match.getTeamAlogo());
-		stmt.setString(8, match.getTeamBlogo());
-		stmt.setInt(9, match.getTotalseats());
-		stmt.setInt(10, match.getAvailableSeats());
-		stmt.setInt(11, match.getFirstClass_Seats_price());
-		stmt.setInt(12, match.getSecondClass_seats_price());
+		stmt.setTime(5, java.sql.Time.valueOf(match.getMatch_time()));
+		stmt.setString(6, match.getTeamA());
+		stmt.setString(7, match.getTeamB());
+		stmt.setString(8, match.getTeamAlogo());
+		stmt.setString(9, match.getTeamBlogo());
+		stmt.setInt(10, match.getTotalseats());
+		stmt.setInt(11, match.getAvailableSeats());
+		stmt.setInt(12, match.getFirstClass_Seats_price());
+		stmt.setInt(13, match.getSecondClass_seats_price());
 	
 		System.out.println(stmt.executeUpdate()+" row inserted");
 		System.out.println("Value Inserted Successfully");

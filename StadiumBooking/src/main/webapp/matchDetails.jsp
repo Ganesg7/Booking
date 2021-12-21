@@ -2,8 +2,12 @@
     pageEncoding="ISO-8859-1"%>
     <%@page import="com.stadiumbooking.daoimpl.MatchDaoImpl" %>
    <%@page import="java.sql.ResultSet"%>
+   <%@page import="com.stadiumbooking.daoimpl.SportsDaoImpl" %>
 <%MatchDaoImpl matchDao=new MatchDaoImpl();
 ResultSet rs=matchDao.getDate();
+
+SportsDaoImpl sportsDao=new SportsDaoImpl();
+ResultSet sportsRS=sportsDao.getAllSports();
 %> 
 <!DOCTYPE html>
 <html lang="en">
@@ -109,6 +113,7 @@ ResultSet rs=matchDao.getDate();
     <div class="sidenav">
         <a href="UserProfile.jsp">Profile</a>
         <a href="matchDetails.jsp">Matchs Detalis</a>
+        <a href="sportsDetalis.jsp">Sports Detalis</a>
         <a href="Getallusers.jsp">All User</a>
         <a href="AllMatchDetails.jsp">All Matchs Detalis</a>
         <a href="#">Booking Details</a>
@@ -130,9 +135,10 @@ ResultSet rs=matchDao.getDate();
         <label for="event"><b>Event:</b></label>
         <select name="event" id="event" >
             <option value="">--Select--</option>
-            <option value="IPL">IPL</option>
-            <option value="ICC World Cup">ICC World CUP</option>
-            <option value="ISL">ISL</option>
+           <%while(sportsRS.next()) { %>
+           <option value="<%=sportsRS.getString(3)%>"><%=sportsRS.getString(3) %></option>
+            <%} %>
+
         </select>
         <br> <br>
 
@@ -154,7 +160,10 @@ ResultSet rs=matchDao.getDate();
         <input type="date" id="dateinput" name="matchDate" min="<%=rs.getDate(1) %>"   placeholder="Select Date" style="position: relative; left: 95px;">
         <%} %>
         <br> <br>
-        
+        <label><b>Time:</b></label>
+        <input type="time" name="time" id="time"  min="09:00" max="20:00" >
+        <br>
+        <br>
         
         
         <div>
@@ -366,7 +375,7 @@ ResultSet rs=matchDao.getDate();
    
    
     else if(select.options[select.selectedIndex].value=="Cricket" &&
-     event.options[event.selectedIndex].value=="ICC World Cup"){
+     event.options[event.selectedIndex].value=="ICC World CUP"){
 
         teamA.options[1].style.display = 'none';
         teamA.options[2].style.display = 'none';

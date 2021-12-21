@@ -13,7 +13,7 @@ select * from users;
 desc users;
 
 create table match_info(
-match_id    NUMBER GENERATED ALWAYS AS IDENTITY START WITH 100,
+match_id    NUMBER GENERATED ALWAYS AS IDENTITY START WITH 1,
 sportsId int not null,
 stadium_name varchar2(30) not null,
 location varchar2(50) not null,
@@ -30,8 +30,9 @@ primary key(match_id),
 FOREIGN KEY(sportsId) REFERENCES sports_info(sportsId)
 );
 select * from match_info;
-insert into match_info;
-select to_char(match_date,'yyyy/mm/dd')  "date" from match_info where to_char(match_date,'mm')=12;
+select  round(to_date(to_char(match_date,'yyyy-mm-dd'), 'yyyy-mm-dd')- sysdate) as matchDate  from match_info;
+
+select stadium_name,location, round(to_date(to_char(match_date,'yyyy-mm-dd'), 'yyyy-mm-dd')- sysdate) as "date",teamA,teamB,teamAlogo,teamBlogo from match_info;
 drop table match_info;
 
 CREATE SEQUENCE match_id
@@ -39,16 +40,18 @@ MINVALUE 1
 START WITH 1
 INCREMENT BY 1
 CACHE 1000;
+drop sequence match_id;
 select * from match_info;
 create table sports_info(
-sportsId int primary key,
+sportsId  NUMBER GENERATED ALWAYS AS IDENTITY START WITH 100 ,
 sportsName varchar2(50) not null,
-eventName varchar2(40) not null
+eventName varchar2(40) not null,
+primary key(sportsId)
 );
 
 drop table sports_info;
-
-insert into sports_info(sportsid,sportsName,eventName) values(101,'Cricket','ICC World Cup'); 
+commit;
+insert into sports_info(sportsName,eventName) values('Cricket','ICC World Cup'); 
 CREATE SEQUENCE sportsId
 MINVALUE 10
 START WITH 10
@@ -56,6 +59,52 @@ INCREMENT BY 10
 CACHE 1000;
 select * from sports_info;
 
+select FindSportsId(Sportsname,eventname) as SporstId from sports_info;
+
+select FindSportsId('Cricket','IPL') as SporstId from sports_info ;
+
+
+Exec function 
+---------------------------------
+CREATE OR REPLACE Function FindSportsId
+   ( sports_Name IN sports_info.sportsName%type,
+  event_Name IN sports_info.eventName%type )
+   RETURN number
+IS
+   sports_Id number;
+   cursor spId is
+   SELECT sportsId
+     FROM sports_info
+     WHERE sportsName = sports_Name and eventName=event_Name;
+BEGIN
+   open spId;
+   fetch spId into sports_Id;
+   close spId;
+RETURN sports_Id;
+END;
+/
+---------------------------
+
+
+CREATE OR REPLACE FUNCTION get_sportsId(
+    sports_name in sports_info.sportsname%type;
+    event_name in sports_info.eventname%type;
+) 
+RETURN NUMBER
+IS
+    sports_id NUMBER := 0;
+BEGIN
+    
+    SELECT sportsid
+    INTO sports_id
+    FROM sports_info 
+    WHERE sportsname = sports_name and eventname=event_name;
+    RETURN sports_id ;
+END;
+/
+
+
+Exec function get_sportsId('Cricket','IPL');
 --seat detalis
 create table seat_details(
 ticketId int primary key,
@@ -79,7 +128,7 @@ amount number(10),
 FOREIGN KEY(userid) REFERENCES users(userid)
 );
 
-
+commit;
 create table Betting(
 betId int primary key,
 betAmount not null,

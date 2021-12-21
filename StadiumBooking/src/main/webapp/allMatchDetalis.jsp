@@ -93,13 +93,15 @@ left:40px;
  <%while(rs.next())
 	 {%>     
      <br>
-        <img src="<%=rs.getString(8) %>" alt="">  &nbsp;  &nbsp; <label for=""><b><%=rs.getString(6) %></b> &nbsp; Vs &nbsp; <b> <%=rs.getString(7) %> </b></label>
-        <img src="<%=rs.getString(9) %>" alt=""> <br> <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label for=""><%=rs.getString(3) %></label><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label for=""><%=rs.getString(4) %></label><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label for=""><%=rs.getDate(5) %></label><br>
+         <img src="<%=rs.getString(9) %>" >  &nbsp;  &nbsp; <label ><b><%=rs.getString(7) %></b> &nbsp; Vs &nbsp; <b> <%=rs.getString(8) %> </b></label>
+   &nbsp;  &nbsp;     <img src="<%=rs.getString(10) %>" alt=""> <br> <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label class="matchDetalis" ><%=rs.getString(3) %></label><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label class="matchDetalis" ><%=rs.getString(4) %></label><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label class="matchDetalis" ><%=rs.getDate(5) %></label><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label class="matchDetalis" ><%=rs.getTime(6) %></label><br>
+        
 
-        <button> Book Now</button>
+        <button>Book Now</button>
         <hr>
 <%} %>
 

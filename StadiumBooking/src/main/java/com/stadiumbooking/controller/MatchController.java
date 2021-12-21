@@ -6,6 +6,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Locale;
@@ -73,7 +74,9 @@ public class MatchController  extends HttpServlet{
 			System.out.println(dateInString);
 			LocalDate date = LocalDate.parse(dateInString);
 			System.out.println(date);
-			Match match=new Match(spid,stdName,location,date,teamA,teamB,teamAlogo,teamBlogo,totalseats,availSeats,fClass,sClass);
+			String timeInString=req.getParameter("time");
+			LocalTime time=LocalTime.parse(timeInString);
+			Match match=new Match(spid,stdName,location,date,time,teamA,teamB,teamAlogo,teamBlogo,totalseats,availSeats,fClass,sClass);
 			matchDao.insertMatchDetalis(match);
 			res.sendRedirect("AllMatchDetails.jsp");
 		} catch (ClassNotFoundException e) {

@@ -39,7 +39,7 @@ public class SportsDaoImpl implements SportsDao{
 	public void insertSports(Sports sports) throws ClassNotFoundException, SQLException {
 		ConnectionUtill conUtil=new ConnectionUtill();
 		Connection con=conUtil.getDBConnect();
-		
+		System.out.println("Insert Process");
 		String query="insert into sports_info(sportsName,eventName ) values(?,?)";
 		
 		PreparedStatement stmt=con.prepareStatement(query);
@@ -48,7 +48,7 @@ public class SportsDaoImpl implements SportsDao{
 		
 		System.out.println(stmt.executeUpdate()+" row Inserted");
 		System.out.println("Value Inserted Successfully");
-		con.close();
+		
 	}
 
 	@Override

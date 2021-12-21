@@ -12,9 +12,9 @@ public class Sports {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Sports(int sportsId, String sportsName, String eventName) {
+	public Sports( String sportsName, String eventName) {
 		super();
-		this.sportsId = sportsId;
+	
 		this.sportsName = sportsName;
 		this.eventName = eventName;
 	}
