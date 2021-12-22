@@ -55,7 +55,7 @@ public class UserLogin extends HttpServlet {
 			else {
 				HttpSession session = req.getSession();
 				session.setAttribute("error", "Invalid Username or Password ");
-//				res.sendRedirect("index.jsp");
+				res.sendRedirect("index.jsp");
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block

@@ -75,7 +75,7 @@ input {
 		<a href="UserProfile.jsp">Profile</a> 
 		<a href="matchDetails.jsp">Matchs Detalis</a>
 		<a href="sportsDetalis.jsp">Sports Detalis</a>
-		 <a href="Getallusers.jsp">All User</a> 
+		 <a href="Getallusers.jsp?deleteId=0">All User</a>
 		 <a	href="AllMatchDetails.jsp">All Matchs Detalis</a>
 		  <a href="#">BookingDetails</a> 
 		  <a href="index.jsp">Logout</a>

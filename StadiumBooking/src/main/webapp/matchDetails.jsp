@@ -114,7 +114,7 @@ ResultSet sportsRS=sportsDao.getAllSports();
         <a href="UserProfile.jsp">Profile</a>
         <a href="matchDetails.jsp">Matchs Detalis</a>
         <a href="sportsDetalis.jsp">Sports Detalis</a>
-        <a href="Getallusers.jsp">All User</a>
+        <a href="Getallusers.jsp?deleteId=0">All User</a>
         <a href="AllMatchDetails.jsp">All Matchs Detalis</a>
         <a href="#">Booking Details</a>
         <a href="index.jsp">Logout</a>
@@ -134,7 +134,7 @@ ResultSet sportsRS=sportsDao.getAllSports();
         <br> <br>
         <label for="event"><b>Event:</b></label>
         <select name="event" id="event" >
-            <option value="">--Select--</option>
+            <option>--Select--</option>
            <%while(sportsRS.next()) { %>
            <option value="<%=sportsRS.getString(3)%>"><%=sportsRS.getString(3) %></option>
             <%} %>

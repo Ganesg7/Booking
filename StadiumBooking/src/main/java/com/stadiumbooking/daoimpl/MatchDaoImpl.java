@@ -82,4 +82,16 @@ public class MatchDaoImpl implements MatchDao {
 		
 	}
 
+	@Override
+	public ResultSet getMatchByMatchId(int matchId) throws ClassNotFoundException, SQLException {
+		ConnectionUtill conUtil=new ConnectionUtill();
+		Connection con=conUtil.getDBConnect();
+		
+		String query="select stadium_name,location,to_char(match_date,'dd-mm-yyyy'), to_char(match_time,'HH:MI'),teamA,teamB,teamAlogo,teamBlogo,firstclass_seats_price,secondclass_seats_price,totalseats,availableseats from match_info where match_id=?";
+		PreparedStatement pst=con.prepareStatement(query);
+		pst.setInt(1, matchId);
+		ResultSet rs=pst.executeQuery();
+		return rs;
+	}
+
 }

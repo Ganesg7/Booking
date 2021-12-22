@@ -79,7 +79,7 @@
         <a href="UserProfile.jsp">Profile</a>
         <a href="matchDetails.jsp">Matchs Detalis</a>
         <a href="sportsDetalis.jsp">Sports Detalis</a>
-        <a href="Getallusers.jsp">All User</a>
+        <a href="Getallusers.jsp?deleteId=0">All User</a>
         <a href="AllMatchDetails.jsp">All Matchs Detalis</a>
         <a href="#">Booking Details</a>
         <a href="index.jsp">Logout</a>
@@ -93,11 +93,10 @@
      <th>Role</th> 
      <th>Password</th>
      <th>Eamil</th>
-     <th>Phone Number</th>  
+     <th>Phone Number</th> 
+     <th></th> 
      </tr>  
-     
-     
-     
+
 <% while (rs.next()) 
 { 
    %>
@@ -110,10 +109,21 @@
 	<td> <%=rs.getString(5)%> </td> 
 	<td> <%=rs.getString(6)%></td>
 	<td><%=rs.getLong(7) %></td>
-	</tr>   
+	<td><a href="Getallusers.jsp?deleteId=<%=rs.getInt(1)%>">Delete</a></td>
+	</tr>  
+ 
 <% }  
-rs.close();
+
 %>
+
+
+    	<% 
+ int userId=Integer.parseInt(request.getParameter("deleteId"));
+System.out.println(userId);
+userDao1.deleteUser(userId); %>       
+    
+
+
 </table>
 
 

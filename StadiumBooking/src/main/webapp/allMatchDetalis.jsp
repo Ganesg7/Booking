@@ -100,8 +100,7 @@ left:40px;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label class="matchDetalis" ><%=rs.getDate(5) %></label><br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label class="matchDetalis" ><%=rs.getTime(6) %></label><br>
         
-
-        <button>Book Now</button>
+ <a href="seats.jsp?matchId=<%=rs.getInt(1)%>">Book Tickets</a>
         <hr>
 <%} %>
 

@@ -14,7 +14,7 @@ public interface UserDao {
     ResultSet getAllUser() throws ClassNotFoundException, SQLException;
 	public ResultSet getUserById(int id) throws ClassNotFoundException, SQLException;
 	public void updateUser(int userId,String name,String username,String password,String email,Long phoneNumber) throws ClassNotFoundException, SQLException;
-	public void deleteUser(User user) throws ClassNotFoundException, SQLException;
+	public void deleteUser(int userId) throws ClassNotFoundException, SQLException;
 	public ResultSet validateUser(String username, String password) throws ClassNotFoundException, SQLException;
 	public boolean checkUser(String username, String password) throws ClassNotFoundException, SQLException;
 }

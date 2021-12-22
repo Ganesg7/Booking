@@ -78,7 +78,7 @@ left:40px;
         <a href="UserProfile.jsp">Profile</a>
         <a href="matchDetails.jsp">Matchs Detalis</a>
         <a href="sportsDetalis.jsp">Sports Detalis</a>
-        <a href="Getallusers.jsp">All User</a>
+        <a href="Getallusers.jsp?deleteId=0">All User</a>
         <a href="AllMatchDetails.jsp">All Matchs Detalis</a>
         <a href="#">Booking Details</a>
         <a href="index.jsp">Logout</a>
@@ -106,7 +106,7 @@ left:40px;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label class="matchDetalis" ><%=rs.getTime(6) %></label><br>
         
 
-        <button>Book Now</button>
+        <a href="seats.jsp?matchId=<%=rs.getInt(1)%>">Book Tickets</a>
         <hr>
 <%} %>
 

@@ -15,14 +15,14 @@ public class Seats {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Seats(int ticketId, int userid, String ticket_numbers, int match_id, int sportsId, String seatclass,
+	public Seats( int userid, String ticket_numbers, int match_id, String seatclass,
 			int totalpirce, int seatcount) {
 		super();
-		this.ticketId = ticketId;
+		
 		this.userid = userid;
 		this.ticket_numbers = ticket_numbers;
 		this.match_id = match_id;
-		this.sportsId = sportsId;
+		
 		this.seatclass = seatclass;
 		Totalpirce = totalpirce;
 		this.seatcount = seatcount;

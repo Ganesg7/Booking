@@ -99,17 +99,16 @@ public class UserDaoImpl  implements UserDao  {
 	}
 
 	@Override
-	public void deleteUser(User user) throws ClassNotFoundException, SQLException {
-		Scanner sc = new Scanner(System.in);
+	public void deleteUser(int userId) throws ClassNotFoundException, SQLException {
 		ConnectionUtill conUtil=new ConnectionUtill();
 		Connection con=conUtil.getDBConnect();
 		Statement stmt=con.createStatement();
 
-		System.out.println("Enter Username To Delete");
-		String que = "delete from users where username=?";
+		
+		String que = "delete from users where userId=?";
 		PreparedStatement pstmt = con.prepareStatement(que);
-		String name=sc.nextLine();
-		pstmt.setString(1, name);
+		
+		pstmt.setInt(1, userId);
 		System.out.println(pstmt.executeUpdate()+" deleted");
 		
 	}
