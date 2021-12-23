@@ -2,7 +2,9 @@ package com.stadiumbooking.daoimpl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import com.stadiumbooking.connection.ConnectionUtill;
 import com.stadiumbooking.dao.SeatsDao;
@@ -33,6 +35,29 @@ public class SeatsDaoImpl implements SeatsDao {
 		
 		
 		
+	}
+
+	@Override
+	public ResultSet getSeatById(int userId) throws ClassNotFoundException, SQLException {
+		ConnectionUtill conUtil=new ConnectionUtill();
+		Connection con=conUtil.getDBConnect();
+		
+		String query="select * from seat_details where userid=?";
+		PreparedStatement pst=con.prepareStatement(query);
+		pst.setInt(1, userId);
+		ResultSet rs=pst.executeQuery();
+		return rs;
+	}
+
+	@Override
+	public ResultSet getSeatsDetalis() throws ClassNotFoundException, SQLException {
+		ConnectionUtill conUtil=new ConnectionUtill();
+		Connection con=conUtil.getDBConnect();
+		Statement stmt=con.createStatement();
+		String query="select * from seat_details";
+		
+		ResultSet rs=stmt.executeQuery(query);
+		return rs;
 	}
 
 	

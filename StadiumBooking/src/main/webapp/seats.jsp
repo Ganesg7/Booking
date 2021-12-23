@@ -159,9 +159,13 @@ width:100px;
      <label><b>Available Seats:</b><%=rs.getInt(12) %></label>
     <div class="stadium-container">
         <form action="booking">
-        <br>
         <input type="text" id="matchId" value="<%=request.getParameter("matchId")%>" name="matchIds" style="visibility:hidden;"> 
-       <label> </label>
+        <br>
+        <label><b>Enter Seat Number:</b></label>
+         <input type="text" id="ticketNumber" name="ticketNumber">
+        
+        
+
         <label><b>Pick a Seats Category:</b></label>
        
         <select id="stadium" name="seatsCategory">
@@ -181,6 +185,7 @@ width:100px;
         <input type="text" id="count" name="seatCounts"> &nbsp;&nbsp;&nbsp; <label ><b>Total Price:</b></label>
         <input type="text" id="total" name="totalprice">
         <br><br>
+       
         <button type="submit" onmouseover="check()" >Pay</button>
 
     </form>
@@ -289,6 +294,17 @@ width:100px;
 
         count.value=selectedSeatsCount;
         total.value=selectedSeatsCount*ticketPrice;
+        
+        var randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        var randomNumber='0123456789';
+        var
+        var result = '';
+        for ( var i = 0; i < selectedSeatsCount; i++ ) {
+            result += randomChars.charAt(Math.floor(Math.random() * randomChars.length))+randomNumber.charAt(Math.floor(Math.random() * randomChars.length));
+            console.log("vanakkam");
+            document.getElementById("ticketNumber").value=result;
+        }
+        
     }
 
     seatsSelect.addEventListener('change', (e) =>{

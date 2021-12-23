@@ -80,7 +80,7 @@ left:40px;
         <a href="sportsDetalis.jsp">Sports Detalis</a>
         <a href="Getallusers.jsp?deleteId=0">All User</a>
         <a href="AllMatchDetails.jsp">All Matchs Detalis</a>
-        <a href="#">Booking Details</a>
+        <a href="allBookingDetails.jsp">Booking Details</a>
         <a href="index.jsp">Logout</a>
     </div>
    

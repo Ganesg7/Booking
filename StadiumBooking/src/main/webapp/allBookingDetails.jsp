@@ -1,45 +1,48 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-
+    
+    
  <%@page import="java.sql.ResultSet"%>
  <%@page import="com.stadiumbooking.daoimpl.MatchDaoImpl" %>
  <%@page import="com.stadiumbooking.daoimpl.SeatsDaoImpl" %>
+ <%@page import="com.stadiumbooking.daoimpl.UserDaoImpl"%>
 <% 
 SeatsDaoImpl seatDao=new SeatsDaoImpl();
-MatchDaoImpl matchDao=new MatchDaoImpl(); %>
+MatchDaoImpl matchDao=new MatchDaoImpl();
+UserDaoImpl userDao = new UserDaoImpl();
+%>
+    
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <style>
-
 .sidenav {
-            height: 100%;
-            width: 200px;
-            position: fixed;
+	height: 100%;
+	width: 200px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: steelblue;
+}
 
-            top: 0;
-            left: 0;
-            background-color:steelblue;
+.sidenav a {
+	padding: 6px 6px 6px 32px;
+	text-decoration: none;
+	font-size: 23px;
+	color: white;
+	display: block;
+}
 
-        }
+.sidenav a:hover {
+	color: black;
+}
 
-        .sidenav a {
-            padding: 6px 6px 6px 32px;
-            text-decoration: none;
-            font-size: 23px;
-            color: white;
-            display: block;
-        }
-
-        .sidenav a:hover {
-            color: black;
-        }
-
-        .main {
-            margin-left: 200px;
-        }
+.main {
+	margin-left: 200px;
+}
         .matchDetalis{
 
              position: relative;
@@ -49,30 +52,38 @@ MatchDaoImpl matchDao=new MatchDaoImpl(); %>
 </style>
 </head>
 <body>
+	<div class="sidenav">
+		<a href="UserProfile.jsp">Profile</a> 
+		<a href="matchDetails.jsp">Matchs Detalis</a>
+		<a href="sportsDetalis.jsp">Sports Detalis</a>
+		 <a href="Getallusers.jsp?deleteId=0">All User</a>
+		 <a	href="AllMatchDetails.jsp">All Matchs Detalis</a>
+		  <a href="#">BookingDetails</a> 
+		  <a href="index.jsp">Logout</a>
+	</div>
 
- <div class="sidenav">
-       <a href="usersprofile.jsp">Profile</a>
-          <a href="allMatchDetalis.jsp">Matchs Detalis</a>
-        <a href="mymatch.jsp">My Match</a>
-        <a href="#">Payment</a>
-        <a href="index.jsp">Logout</a>
-    </div>
-
-
-
- <%int userId = (int)session.getAttribute("id"); %>
+     
 <% 
-ResultSet rs=seatDao.getSeatById(userId);
+ResultSet rs=seatDao.getSeatsDetalis();
 while(rs.next()){
-int matchIds=rs.getInt(4);
+int matchId=rs.getInt(4);
+int userId=rs.getInt(2);
 %>
 
-<%ResultSet rs1=matchDao.getMatchByMatchId(matchIds); 
+<%ResultSet rs1=matchDao.getMatchByMatchId(matchId); 
 if(rs1.next()){
 %>
 
     <div class="matchDetalis">
+    <%ResultSet rs2 = userDao.getUserById(userId);
+    if(rs2.next()){
+    %>
 
+
+        <b><%=rs2.getString(2)%></b>
+        
+        <%} %>
+        <br>
         <b><%=rs1.getString(5) %></b>  Vs <b><%=rs1.getString(6) %></b>
         <br>
         <label><%=rs1.getString(2) %></label>
@@ -91,5 +102,7 @@ if(rs1.next()){
 <hr style="width: 300px;">
     </div>
     <%} %>
+
+
 </body>
 </html>

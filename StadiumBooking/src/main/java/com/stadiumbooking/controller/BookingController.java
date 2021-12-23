@@ -3,6 +3,7 @@ package com.stadiumbooking.controller;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import com.stadiumbooking.daoimpl.MatchDaoImpl;
 import com.stadiumbooking.daoimpl.SeatsDaoImpl;
 import com.stadiumbooking.module.Seats;
 
@@ -16,7 +17,7 @@ import jakarta.servlet.http.HttpSession;
 public class BookingController extends HttpServlet {
 	
 	SeatsDaoImpl seatDao=new SeatsDaoImpl();
-	
+	MatchDaoImpl matchDao=new MatchDaoImpl();
 	public void service(HttpServletRequest req,HttpServletResponse res) {
 		HttpSession session2 = req.getSession();
 		System.out.println("Hello Peter");
@@ -31,13 +32,14 @@ public class BookingController extends HttpServlet {
 		int userId =  (int) session2.getAttribute("id");
 		System.out.println(userId);
 		
-		String ticketNumber="A1,A2,A3";
+		String ticketNumber=req.getParameter("ticketNumber");
 		
 		System.out.println(seatclass+seatCounts+totalprice+matchId+userId);
 		Seats seats=new Seats(userId,ticketNumber,matchId,seatclass,totalprice,seatCounts);
 		
 		try {
 			seatDao.bookingSeats(seats);
+			matchDao.updateAvailableSeats(seatCounts, matchId);
 			res.sendRedirect("mymatch.jsp");
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block

@@ -48,7 +48,7 @@
         <a href="sportsDetalis.jsp">Sports Detalis</a>
         <a href="Getallusers.jsp">All User</a>
         <a href="AllMatchDetails.jsp">All Matchs Detalis</a>
-        <a href="#">Booking Details</a>
+        <a href="allBookingDetails.jsp">Booking Details</a>
         <a href="index.jsp">Logout</a>
     </div>
     <br>

@@ -75,8 +75,9 @@
   <div class="sidenav">
        <a href="usersprofile.jsp">Profile</a>
         <a href="allMatchDetalis.jsp">Matchs Detalis</a>
-        <a href="#">My Match</a>
+        <a href="mymatch.jsp">My Match</a>
         <a href="#">Payment</a>
+        <a href="rating.jsp">Payment</a>
         <a href="index.jsp">Logout</a>
     </div>
 
