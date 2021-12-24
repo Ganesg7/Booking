@@ -7,6 +7,7 @@ import com.stadiumbooking.module.Ratings;
 
 public interface RatingsDao {
 	public void ratingStadium(Ratings ratings) throws ClassNotFoundException, SQLException;
+	public ResultSet getAllRatingsById(int stadium_id) throws ClassNotFoundException, SQLException;
 	public ResultSet getAllRatings() throws ClassNotFoundException, SQLException;
 
 }

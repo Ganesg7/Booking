@@ -28,16 +28,31 @@ public class RatingsDaoImpl implements RatingsDao {
 	}
 
 	@Override
+	public ResultSet getAllRatingsById(int stadium_id) throws ClassNotFoundException, SQLException {
+		ConnectionUtill conUtil=new ConnectionUtill();
+		Connection con=conUtil.getDBConnect();
+		Statement stmt=con.createStatement();
+		System.out.println(stadium_id);
+		String query="Select * from Ratings where stadium_id=?";
+		PreparedStatement stmt1=con.prepareStatement(query);		
+		stmt1.setInt(1, stadium_id);
+		ResultSet rs2=stmt1.executeQuery();
+
+		
+		return rs2;
+	}
+
+	@Override
 	public ResultSet getAllRatings() throws ClassNotFoundException, SQLException {
 		ConnectionUtill conUtil=new ConnectionUtill();
 		Connection con=conUtil.getDBConnect();
 		Statement stmt=con.createStatement();
-		String query="Select * from Ratings";
+		String query="Select * from Ratings where stadium_id=?";
 		
 		ResultSet rs=stmt.executeQuery(query);
+		return rs;
 
 		
-		return rs;
 	}
 	
 

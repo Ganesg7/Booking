@@ -72,13 +72,16 @@ input {
 <body>
 
 	<div class="sidenav">
-		<a href="UserProfile.jsp">Profile</a> 
-		<a href="matchDetails.jsp">Matchs Detalis</a>
-		<a href="sportsDetalis.jsp">Sports Detalis</a>
-		 <a href="Getallusers.jsp?deleteId=0">All User</a>
-		 <a	href="AllMatchDetails.jsp">All Matchs Detalis</a>
-		 <a href="allBookingDetails.jsp">Booking Details</a>
-		  <a href="index.jsp">Logout</a>
+	   <a href="UserProfile.jsp">Profile</a>
+        <a href="matchDetails.jsp">Matchs Details</a>
+        <a href="stadiumDetalis.jsp">Stadium Details</a>
+        <a href="sportsDetalis.jsp">Sports Details</a>
+        <a href="Getallusers.jsp?deleteId=0">All User</a>
+        <a href="AllMatchDetails.jsp">All Matchs Details</a>
+        <a href="allBookingDetails.jsp">Booking Details</a>
+        <a href="stadiumList.jsp">Stadium Lists</a>
+        <a href="ratingList.jsp">Rating Lists</a>
+        <a href="index.jsp">Logout</a>
 	</div>
 
 

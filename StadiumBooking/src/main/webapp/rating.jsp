@@ -31,7 +31,7 @@
     color:#ccc;
 }
 .rate:not(:checked) > label:before {
-    content:'★';
+    content:'\2605';
 }
 .rate > input:checked ~ label {
     color: #ffc700;    
@@ -67,8 +67,8 @@
     <div>
         <br>
         <form action="ratings" onsubmit="return ratings()">
-          <input type="text" name="ratingNumber" id="ratingNumber">
-            <input type="text" id="stadiumId" name="stadiumId" style="visibility: hidden;">
+          <input type="text" name="ratingNumber" id="ratingNumber" style="visibility:hidden;">
+            <input type="text" id="stadiumId" value="<%=request.getParameter("stadiumId")%>" name="stadiumId" style="visibility:hidden;"  >
          <br>
           <label>Write a review</label>
           <br> <br>

@@ -77,7 +77,8 @@
         <a href="allMatchDetalis.jsp">Matchs Detalis</a>
         <a href="mymatch.jsp">My Match</a>
         <a href="#">Payment</a>
-        <a href="rating.jsp">Payment</a>
+        <a href="stadiumList.jsp">Stadium Lists</a>
+        <a href="ratingList.jsp">Rating Lists</a>
         <a href="index.jsp">Logout</a>
     </div>
 

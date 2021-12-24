@@ -23,17 +23,17 @@
         </style>
 </head>
 <body>
-
-   <div>
        <%ResultSet rs=stadiumDao.getAllStadiumList(); 
-
+while(rs.next()){
 %>
-        <img src="https://images.hindustantimes.com/rf/image_size_960x540/HT/p2/2017/09/20/Pictures/_6ae70e06-9def-11e7-ba2d-20fa1b34073f.jpg" alt="">
-        
-      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
-        <img src="https://media-cdn.tripadvisor.com/media/photo-s/09/4e/e5/3c/chepauk-stadium.jpg" alt="">
+     
+   <div>
+   <img src="<%=rs.getString(3) %>" >
+      
        <br>
-        <b>Chappak</b> <b style="position: relative;left: 720px;">Stadium Name</b>
+       <b><a href="rating.jsp?stadiumId=<%=rs.getInt(1)%>"><%=rs.getString(2) %></a></b>  
+       
     </div>
+     <%} %>
 </body>
 </html>

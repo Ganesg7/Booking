@@ -16,7 +16,7 @@ public class SportsController extends HttpServlet {
 	SportsDaoImpl sportsDao=new SportsDaoImpl();
 	
 	public void service(HttpServletRequest req,HttpServletResponse res) {
-		System.out.println("SPorts");
+		
 		String sportsName=req.getParameter("sportsName");
 		String eventName=req.getParameter("eventName");
 		

@@ -34,7 +34,7 @@
         .main {
             margin-left: 200px;
         }
-        #sports{
+        #stadium{
             position: absolute;
             left: 400px;
             top: 100px;
@@ -43,11 +43,11 @@
 </head>
 <body>
     <div class="sidenav">
-          <a href="UserProfile.jsp">Profile</a>
+         <a href="UserProfile.jsp">Profile</a>
         <a href="matchDetails.jsp">Matchs Details</a>
         <a href="stadiumDetalis.jsp">Stadium Details</a>
         <a href="sportsDetalis.jsp">Sports Details</a>
-        <a href="Getallusers.jsp?deleteId=0">All User</a>
+       <a href="Getallusers.jsp?deleteId=0">All User</a>
         <a href="AllMatchDetails.jsp">All Matchs Details</a>
         <a href="allBookingDetails.jsp">Booking Details</a>
         <a href="stadiumList.jsp">Stadium Lists</a>
@@ -55,22 +55,22 @@
         <a href="index.jsp">Logout</a>
     </div>
     <br>
-    <div id="sports">
-    <form action="sports" onsubmit="return insert()">
+    <div id="stadium">
+    <form action="stadium" onsubmit="return insert()">
 
-        <label ><b>Sports Name:</b></label>
-        <input type="text" name="sportsName" id="sportsName" >
+        <label ><b>Stadium Name:</b></label>
+        <input type="text" name="stadiumName" id="stadiumName" >
         <br>
         
-        <label style="visibility: hidden;" id="sportsError">Enter Sports Name</label>
+        <label style="visibility: hidden;" id="stadiumError">Enter Stadium Name</label>
         <br>
-        <label ><b>Event Name:</b></label>
-        <input type="text" name="eventName" id="eventName">
+        <label ><b>Stadium Image :</b></label>
+        <input type="url" name="stadiumImge" id="stadiumImge">
         <br>
-        <label style="visibility: hidden;" id="event">Enter Event Name</label>
+        <label style="visibility: hidden;" id="image">Enter Image Url</label>
         <br>
         <button type="submit">Submit</button>
-
+     
 
     </form>
 </div>
@@ -79,22 +79,22 @@
 <script>
     function insert(){
 
-        var sportsName=document.getElementById("sportsName");
-        var eventName=document.getElementById("eventName");
+        var sstadiumName=document.getElementById("stadiumName");
+        var stadiumImge=document.getElementById("stadiumImge");
 
-        if(sportsName.value.trim() ==""){
+        if(sstadiumName.value.trim() ==""){
             console.log("vanakkam")
-            document.getElementById("sportsError").style.visibility="visible";
-            document.getElementById("sportsError").style.color="red";
-            document.getElementById("sportsError").style.position="relative";
-            document.getElementById("sportsError").style.left="100px";
+            document.getElementById("stadiumError").style.visibility="visible";
+            document.getElementById("stadiumError").style.color="red";
+            document.getElementById("stadiumError").style.position="relative";
+            document.getElementById("stadiumError").style.left="100px";
             return false;
         }
-        else if(eventName.value.trim()==""){
-            document.getElementById("event").style.visibility="visible";
-            document.getElementById("event").style.color="red";
-            document.getElementById("event").style.position="relative";
-            document.getElementById("event").style.left="100px";
+        else if(stadiumImge.value.trim()==""){
+            document.getElementById("image").style.visibility="visible";
+            document.getElementById("image").style.color="red";
+            document.getElementById("image").style.position="relative";
+            document.getElementById("image").style.left="100px";
             return false;
 
         }

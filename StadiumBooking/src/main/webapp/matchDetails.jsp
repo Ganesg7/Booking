@@ -3,11 +3,14 @@
     <%@page import="com.stadiumbooking.daoimpl.MatchDaoImpl" %>
    <%@page import="java.sql.ResultSet"%>
    <%@page import="com.stadiumbooking.daoimpl.SportsDaoImpl" %>
+   <%@page import="com.stadiumbooking.daoimpl.StadiumDaoImpl" %>
 <%MatchDaoImpl matchDao=new MatchDaoImpl();
 ResultSet rs=matchDao.getDate();
 
 SportsDaoImpl sportsDao=new SportsDaoImpl();
 ResultSet sportsRS=sportsDao.getAllSports();
+StadiumDaoImpl stadiumDao=new StadiumDaoImpl();
+ResultSet stadiumRs=stadiumDao.getAllStadiumList();
 %> 
 <!DOCTYPE html>
 <html lang="en">
@@ -111,19 +114,27 @@ ResultSet sportsRS=sportsDao.getAllSports();
 
 
     <div class="sidenav">
-        <a href="UserProfile.jsp">Profile</a>
-        <a href="matchDetails.jsp">Matchs Detalis</a>
-        <a href="sportsDetalis.jsp">Sports Detalis</a>
+         <a href="UserProfile.jsp">Profile</a>
+        <a href="matchDetails.jsp">Matchs Details</a>
+        <a href="stadiumDetalis.jsp">Stadium Details</a>
+        <a href="sportsDetalis.jsp">Sports Details</a>
         <a href="Getallusers.jsp?deleteId=0">All User</a>
-        <a href="AllMatchDetails.jsp">All Matchs Detalis</a>
-        <a href="#">Booking Details</a>
+        <a href="AllMatchDetails.jsp">All Matchs Details</a>
+        <a href="allBookingDetails.jsp">Booking Details</a>
+        <a href="stadiumList.jsp">Stadium Lists</a>
+        <a href="ratingList.jsp">Rating Lists</a>
         <a href="index.jsp">Logout</a>
     </div>
 
     <div id="Form">
     <form action="matchServe" onsubmit="return sports()" >
         <label for="stadoumName"><b>Stadoum Name:</b></label>
-        <input type="text" name="stdname" placeholder="Enter Stadium Name" style="position: relative; left: 20px;">
+        <select name="stdname" placeholder="Enter Stadium Name" style="position: relative; left: 20px;">
+        <option >--Select--</option>
+        <%while(stadiumRs.next()){ %>
+        <option value="<%=stadiumRs.getString(2)%>"><%=stadiumRs.getString(2)%></option>
+       <%} %>
+        </select>
         <br> <br>
         <label for="Sports Name"><b>Sports Name:</b></label>
         <select name="spname" id="spname">
@@ -143,7 +154,7 @@ ResultSet sportsRS=sportsDao.getAllSports();
         <br> <br>
 
         <label for="location"><b>Location:</b></label>
-        <select  name="location" id="location" style="position: relative; left: 65px; width: 180px;">
+        <select  name="location" id="location" style="position: relative; left: 65px; width: 150px;">
             <option value="">--Select Location--</option>
             <option value="Chennai">Chennai</option>
             <option value="Kolkata">Kolkata</option>
@@ -161,7 +172,7 @@ ResultSet sportsRS=sportsDao.getAllSports();
         <%} %>
         <br> <br>
         <label><b>Time:</b></label>
-        <input type="time" name="time" id="time"  min="09:00" max="20:00" >
+        <input type="time" name="time" id="time"  min="09:00" max="20:00" style="position: relative; left: 95px; width:145px " >
         <br>
         <br>
         
@@ -249,13 +260,13 @@ ResultSet sportsRS=sportsDao.getAllSports();
     
     
     <label for="teamAimg"><b>Team A logo </b></label>
-        <input type="url" name="teamAlogo" id="teamAlogo">
+        <input type="url" name="teamAlogo" id="teamAlogo" style="position: relative; left: 55px; width:145px ">
         <br> <br>
         <label for="tramBimg"><b>Team B logo</b></label>
-        <input type="url" name="teamBlogo" id="teamBlogo">
+        <input type="url" name="teamBlogo" id="teamBlogo" style="position: relative; left: 55px; width:145px ">
         <br> <br>
         <label for="numberseats"><b>Number Of Seats:</b></label>
-        <select name="totalSeats" id="seats" >
+        <select name="totalSeats" id="seats" style="position: relative; left: 15px; width:145px ">
             <option value="200">200</option>
             <option value="300">300</option>
             <option value="400">400</option>
@@ -263,7 +274,7 @@ ResultSet sportsRS=sportsDao.getAllSports();
         </select>
         <br> <br>
          <label for="availseats"><b>Available Seats: </b></label>
-        <select name="availseats" id="seat">
+        <select name="availseats" id="seat" style="position: relative; left: 30px; width:145px ">
             <option value="">--Select--</option>
             <option value="100">100</option>
             <option value="125">125</option>

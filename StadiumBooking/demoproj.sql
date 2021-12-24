@@ -156,24 +156,25 @@ primary key(stadium_id)
 );
 drop  table stadium_detalis;
 insert into stadium_detalis (stadium_name,stadium_img) values ('Chepauk','https://resize.indiatvnews.com/en/resize/oldbucket/715_-/sportscricket/IndiaTv7ebb19_ma.jpg'); 
-insert into stadium_detalis (stadium_name,stadium_img) values ('Wankhede');
-insert into stadium_detalis (stadium_name,stadium_img) values('Jawaharlal nehru');
-insert into stadium_detalis (stadium_name,stadium_img) values('Chinnaswamy');
-insert into stadium_detalis (stadium_name,stadium_img) values('Eden Garden');
-insert into stadium_detalis (stadium_name,stadium_img) values('Indira Gandhi Athletic');
-
+insert into stadium_detalis (stadium_name,stadium_img) values ('Wankhede','https://assets.architecturaldigest.in/photos/60082844a28465f75014be44/16:9/w_1280,c_limit/ipl-2018-wankhede-stadium-mumbai-indians-chennai-superkings-1366x768.jpg');
+insert into stadium_detalis (stadium_name,stadium_img) values('Jawaharlal nehru','https://images.indianexpress.com/2020/03/jln-stadium.jpg');
+insert into stadium_detalis (stadium_name,stadium_img) values('Chinnaswamy','https://www.deccanherald.com/sites/dh/files/articleimages/2021/04/28/chinnaswamy-dh-979646-1619549852.jpg');
+insert into stadium_detalis (stadium_name,stadium_img) values('Eden Garden','https://www.india.com/wp-content/uploads/2018/08/16-kolkata-eden-gardens-3-1.jpg');
+insert into stadium_detalis (stadium_name,stadium_img) values('Indira Gandhi Athletic','https://images.hindustantimes.com/rf/image_size_960x540/HT/p2/2017/09/20/Pictures/_6ae70e06-9def-11e7-ba2d-20fa1b34073f.jpg');
+select * from stadium_detalis;
 drop table Ratings;
+
 create table Ratings(
 reviewID NUMBER GENERATED ALWAYS AS IDENTITY START WITH 1,
 userId int not null,
-reviews varchar2(2000),
-ratings number(1,2),
+reviews varchar2(4000),
+ratings number(2,1),
 stadium_id int not null,
 primary key(reviewId),
 FOREIGN KEY(userid) REFERENCES users(userid),
 foreign key(stadium_id) references stadium_detalis(stadium_id)
 );
-
+select * from ratings;
 
 
 commit;
