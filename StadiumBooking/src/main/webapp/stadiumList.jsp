@@ -23,17 +23,23 @@
         </style>
 </head>
 <body>
+  <table>
+   <tr>
+   <th>Stadium Name</th>
+   <th></th>
+   </tr>
+   <tr>
        <%ResultSet rs=stadiumDao.getAllStadiumList(); 
 while(rs.next()){
 %>
      
    <div>
-   <img src="<%=rs.getString(3) %>" >
-      
-       <br>
-       <b><a href="rating.jsp?stadiumId=<%=rs.getInt(1)%>"><%=rs.getString(2) %></a></b>  
+ 
+   <td><a href="rating.jsp?stadiumId=<%=rs.getInt(1)%>"><%=rs.getString(2) %></a></td>
+  <td> <img src="<%=rs.getString(3) %>" ></td>
+       </tr>
        
     </div>
-     <%} %>
+     <%} %></table>
 </body>
 </html>

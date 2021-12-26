@@ -11,6 +11,7 @@ public class Seats {
 	private String seatclass;
 	private int Totalpirce;
 	private int seatcount;
+	private String status;
 	public Seats() {
 		super();
 		// TODO Auto-generated constructor stub

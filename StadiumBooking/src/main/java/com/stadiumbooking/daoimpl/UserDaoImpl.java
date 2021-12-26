@@ -78,20 +78,20 @@ public class UserDaoImpl  implements UserDao  {
 	}
 
 	@Override
-	public void updateUser(int userId,String name,String username,String password,String email,Long phoneNumber) throws ClassNotFoundException, SQLException {
-		Scanner sc = new Scanner(System.in);
+	public void updateUser(User user) throws ClassNotFoundException, SQLException {
+		
 		ConnectionUtill conUtil=new ConnectionUtill();
 		Connection con=conUtil.getDBConnect();
 		Statement stmt=con.createStatement();
-		System.out.println("DAOOOOO\n"+name+"\n"+username+"\n"+userId+password+email+phoneNumber+"\n"+"DAOOOO");
+		System.out.println("DAOOOOO\n"+user.getName()+"\n"+user.getUsername()+"\n"+user.getUserid()+user.getPassword()+user.getEmail()+user.getPhoneNumber()+"\n"+"DAOOOO");
 			String que = "update users set name=?,username=?,password=?,email=?, phoneNumber=? where userid=?";
 			PreparedStatement pstmt = con.prepareStatement(que);
-			pstmt.setString(1, name);
-			pstmt.setString(2, username);
-			pstmt.setString(3, password);
-			pstmt.setString(4, email);
-			pstmt.setLong(5, phoneNumber);
-			pstmt.setInt(6, userId);
+			pstmt.setString(1, user.getName());
+			pstmt.setString(2, user.getUsername());
+			pstmt.setString(3, user.getPassword());
+			pstmt.setString(4, user.getEmail());
+			pstmt.setLong(5, user.getPhoneNumber());
+			pstmt.setInt(6, user.getUserid());
 			int i=pstmt.executeUpdate();
 			System.out.println(i+" Updated");
 		

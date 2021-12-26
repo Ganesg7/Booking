@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import com.stadiumbooking.daoimpl.UserDaoImpl;
+import com.stadiumbooking.module.User;
 
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -16,6 +17,7 @@ public class UserUpdateController extends HttpServlet {
 	
 	UserDaoImpl userDao=new UserDaoImpl();
 
+	
 	public void service(HttpServletRequest req, HttpServletResponse res) {
 		HttpSession session1 = req.getSession();
 		String name=req.getParameter("updateName").trim();
@@ -31,13 +33,15 @@ public class UserUpdateController extends HttpServlet {
 			
 			if(role.equals("Admin")) 
 			{
-				userDao.updateUser(userId, name, username, password, email, phoneNumber);
+				User user=new User(userId, name, username, password, email, phoneNumber);
+				userDao.updateUser(user);
 	         	res.sendRedirect("UserProfile.jsp");
 
 
 	}
 	else if(role.equals("User")) {
-		userDao.updateUser(userId, name, username, password, email, phoneNumber);
+		User user=new User(userId, name, username, password, email, phoneNumber);
+		userDao.updateUser(user);
 		res.sendRedirect("usersprofile.jsp");
 	}
 			

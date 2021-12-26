@@ -9,5 +9,6 @@ public interface SeatsDao {
 	public void bookingSeats(Seats seats) throws ClassNotFoundException, SQLException;
 	public ResultSet getSeatById(int userId) throws ClassNotFoundException, SQLException;
 	public ResultSet getSeatsDetalis() throws ClassNotFoundException, SQLException;
+	public void cancelledSeats(int TicketId) throws ClassNotFoundException, SQLException; 
 
 }

@@ -52,6 +52,7 @@ select stadium_name,location,to_char(match_date,'dd-mm-yyyy'), to_char(match_tim
 create table sports_info(
 
 
+
 sportsId  NUMBER GENERATED ALWAYS AS IDENTITY START WITH 100 ,
 sportsName varchar2(50) not null,
 eventName varchar2(40) not null,
@@ -140,13 +141,20 @@ primary key(ticketId)
 
 select * from seat_details;
 drop table seat_details;
- 
+
+ALTER TABLE seat_details
+ADD Status varchar(255) default 'Booked'; 
+update match_info set availableSeats=availableSeats+3 where match_id=2;
+
+
  create table wallet_details(
 walletId int primary key ,
 userId int not null,
 amount number(10),
 FOREIGN KEY(userid) REFERENCES users(userid)
 );
+
+
 
 create table stadium_detalis(
 stadium_id NUMBER GENERATED ALWAYS AS IDENTITY START WITH 1,

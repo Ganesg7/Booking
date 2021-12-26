@@ -108,4 +108,18 @@ public class MatchDaoImpl implements MatchDao {
 		
 	}
 
+	@Override
+	public void updateCancelledSeats(int seatsCount, int matchId) throws ClassNotFoundException, SQLException {
+		ConnectionUtill conUtil=new ConnectionUtill();
+		Connection con=conUtil.getDBConnect();
+		System.out.println(seatsCount);
+		String query="update match_info set availableSeats=availableSeats+? where match_id=?";
+		
+		PreparedStatement pst=con.prepareStatement(query);
+		pst.setInt(1, seatsCount);
+		pst.setInt(2, matchId);
+		System.out.println(pst.executeUpdate()+" Updated");
+		
+	}
+
 }

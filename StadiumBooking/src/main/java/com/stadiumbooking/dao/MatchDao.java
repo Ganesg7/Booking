@@ -12,5 +12,6 @@ public interface MatchDao {
 	public ResultSet getDate() throws ClassNotFoundException, SQLException;
 	public ResultSet getMatchByMatchId(int matchId) throws ClassNotFoundException, SQLException;
 	public void updateAvailableSeats(int seatsCount, int matchId) throws ClassNotFoundException, SQLException;
+	public void updateCancelledSeats(int seatsCount,int matchId) throws ClassNotFoundException, SQLException;
 
 }

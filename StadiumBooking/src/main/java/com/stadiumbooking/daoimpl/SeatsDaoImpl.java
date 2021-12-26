@@ -60,5 +60,32 @@ public class SeatsDaoImpl implements SeatsDao {
 		return rs;
 	}
 
+	@Override
+	public void cancelledSeats(int TicketId) throws ClassNotFoundException, SQLException {
+		ConnectionUtill conUtil=new ConnectionUtill();
+		Connection con=conUtil.getDBConnect();
+		Statement stmt=con.createStatement();
+		String que = "update seat_details set Status=? where ticketid=?";
+			PreparedStatement pstmt = con.prepareStatement(que);
+			pstmt.setString(1, "Cancelled");
+			pstmt.setInt(2, TicketId);
+		
+			int i=pstmt.executeUpdate();
+			System.out.println(i+" Updated");
+			String query="select match_id,seatcount from seat_details where ticketid=?";
+			PreparedStatement pst=con.prepareStatement(query);
+			pst.setInt(1, TicketId);
+			ResultSet rs=pst.executeQuery();
+			int matchId;
+			int seatcounts;
+			if(rs.next()) {
+				matchId=rs.getInt(1);
+				seatcounts=rs.getInt(2);
+				MatchDaoImpl matchDao=new MatchDaoImpl();
+				matchDao.updateCancelledSeats(seatcounts, matchId);
+			}
+		
+	}
+
 	
 }

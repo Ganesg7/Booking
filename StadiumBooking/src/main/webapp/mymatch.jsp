@@ -53,7 +53,7 @@ MatchDaoImpl matchDao=new MatchDaoImpl(); %>
  <div class="sidenav">
        <a href="usersprofile.jsp">Profile</a>
        <a href="allMatchDetalis.jsp">Matchs Detalis</a>
-        <a href="mymatch.jsp">My Match</a>
+        <a href="mymatch.jsp?ticketId=0">My Match</a>
         <a href="#">Payment</a>
         <a href="stadiumList.jsp">Stadium Lists</a>
         <a href="ratingList.jsp">Rating Lists</a>
@@ -90,8 +90,26 @@ if(rs1.next()){
 
          <br>
          <label>Seats Numbers:<%=rs.getString(3) %></label>
+         <br>
+         <%if(rs.getString(8).equals("Booked")) {%>
+<a href="mymatch.jsp?ticketId=<%= rs.getInt(1)%>">Cancelle Ticktes</a>
+<%}
+         else{
+         
+         %>
+         <lable>Cancelled</lable>
+         <%} %>
 <hr style="width: 300px;">
+<br>
+
     </div>
     <%} %>
+    
+    <% 
+ int ticketId=Integer.parseInt(request.getParameter("ticketId"));
+
+    seatDao.cancelledSeats(ticketId);%>  
+    
+    
 </body>
 </html>
