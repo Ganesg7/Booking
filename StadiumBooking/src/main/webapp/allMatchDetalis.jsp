@@ -76,7 +76,7 @@ left:40px;
         <a href="usersprofile.jsp">Profile</a>
           <a href="allMatchDetalis.jsp">Matchs Detalis</a>
         <a href="mymatch.jsp?ticketId=0">My Match</a>
-        <a href="#">Payment</a>
+        <a href="wallet.jsp">Wallet</a>
         <a href="stadiumList.jsp">Stadium Lists</a>
         <a href="ratingList.jsp">Rating Lists</a>
         <a href="index.jsp">Logout</a>

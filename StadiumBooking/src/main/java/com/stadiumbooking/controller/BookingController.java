@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import com.stadiumbooking.daoimpl.MatchDaoImpl;
 import com.stadiumbooking.daoimpl.SeatsDaoImpl;
+import com.stadiumbooking.daoimpl.WalletDaoImpl;
 import com.stadiumbooking.module.Seats;
 
 import jakarta.servlet.annotation.WebServlet;
@@ -18,9 +19,10 @@ public class BookingController extends HttpServlet {
 	
 	SeatsDaoImpl seatDao=new SeatsDaoImpl();
 	MatchDaoImpl matchDao=new MatchDaoImpl();
+	WalletDaoImpl walletDao=new WalletDaoImpl();
 	public void service(HttpServletRequest req,HttpServletResponse res) {
 		HttpSession session2 = req.getSession();
-		System.out.println("Hello Peter");
+	
 		int seatCounts=Integer.parseInt(req.getParameter("seatCounts"));
 		System.out.println(seatCounts);
 		String seatclass=req.getParameter("category");
@@ -39,7 +41,9 @@ public class BookingController extends HttpServlet {
 		
 		try {
 			seatDao.bookingSeats(seats);
+			walletDao.updateUserWallet(userId, totalprice);
 			matchDao.updateAvailableSeats(seatCounts, matchId);
+			
 			res.sendRedirect("mymatch.jsp");
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block

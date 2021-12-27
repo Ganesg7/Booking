@@ -1,21 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"  %>
-<%@page import="com.stadiumbooking.daoimpl.UserDaoImpl"%>
-<%@page import="java.sql.ResultSet"%>
-
-
-<%
-   UserDaoImpl userDao1=new UserDaoImpl();
-    ResultSet rs = userDao1.getAllUser();
-    %>
+    pageEncoding="ISO-8859-1"%>
+     <%@page import="java.sql.ResultSet" %>
+     <%@page import="com.stadiumbooking.daoimpl.WalletDaoImpl" %>
+     <% WalletDaoImpl walletDao=new WalletDaoImpl();
+     ResultSet rs=walletDao.allUserWalletList();
+     %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<style>
 
-    <style>
-        .sidenav {
+ .sidenav {
             height: 100%;
             width: 200px;
             position: fixed;
@@ -41,8 +38,7 @@
         .main {
             margin-left: 200px;
         }
-        
-        table {
+         table {
              position: absolute;
              left:235px;  
              top:50px;     
@@ -69,14 +65,13 @@
         color:blue;
         
         }
-
-    </style>
-
+        
+</style>
 </head>
 <body>
 
    <div class="sidenav">
-      <a href="UserProfile.jsp">Profile</a>
+         <a href="UserProfile.jsp">Profile</a>
         <a href="matchDetails.jsp">Matchs Details</a>
         <a href="stadiumDetalis.jsp">Stadium Details</a>
         <a href="sportsDetalis.jsp">Sports Details</a>
@@ -88,48 +83,24 @@
         <a href="ratingList.jsp">Rating Lists</a>
         <a href="index.jsp">Logout</a>
     </div>
-   
-    <table id="tabel">
-      <tr>  
-     <th>User ID</th>
-     <th>Name</th>
-     <th>Username</th>
-     <th>Role</th> 
-     <th>Password</th>
-     <th>Eamil</th>
-     <th>Phone Number</th> 
-     <th></th> 
-     </tr>  
-
-<% while (rs.next()) 
-{ 
-   %>
-	<tr>
-	 <td>
-	  <%= rs.getInt(1)%> </td>
-	<td><%= rs.getString(2)%></td>
-	<td><%= rs.getString(3)%></td> 
-	<td><%= rs.getString(4)%> </td> 
-	<td> <%=rs.getString(5)%> </td> 
-	<td> <%=rs.getString(6)%></td>
-	<td><%=rs.getLong(7) %></td>
-	<td><a href="Getallusers.jsp?deleteId=<%=rs.getInt(1)%>">Delete</a></td>
-	</tr>  
- 
-<% }  
-
-%>
-
-
-    	<% 
- int userId=Integer.parseInt(request.getParameter("deleteId"));
-System.out.println(userId);
-userDao1.deleteUser(userId); %>       
     
-
-
-</table>
-
-
+    <div>
+    <table>
+    <tr>
+    <th>Wallet Id</th>
+    <th>User Id</th>
+    <th>Amount</th>
+    </tr>
+    
+    <%while(rs.next()){ %>
+    <tr>
+    <td><%=rs.getInt(1) %></td>
+    <td><%=rs.getInt(2) %></td>
+    <td><%=rs.getLong(3) %></td>
+    </tr>
+   <%} %> 
+    </table>
+    </div>
+   
 </body>
 </html>

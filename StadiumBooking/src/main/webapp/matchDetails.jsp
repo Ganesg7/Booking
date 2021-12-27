@@ -121,6 +121,7 @@ ResultSet stadiumRs=stadiumDao.getAllStadiumList();
         <a href="Getallusers.jsp?deleteId=0">All User</a>
         <a href="AllMatchDetails.jsp">All Matchs Details</a>
         <a href="allBookingDetails.jsp">Booking Details</a>
+        <a href="allUserWalletList.jsp">All User Wallet List</a>
         <a href="stadiumList.jsp">Stadium Lists</a>
         <a href="ratingList.jsp">Rating Lists</a>
         <a href="index.jsp">Logout</a>
